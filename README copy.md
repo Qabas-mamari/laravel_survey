@@ -12,6 +12,11 @@
 laravel new laravel_survey
 ```
 ### connect to database 
+Check the database name in .env file 
 ```
-
+DB_DATABASE=laravel_survey
+```
+Migrate the initial tables
+```
+php artisan Migrate
 ```
