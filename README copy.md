@@ -41,3 +41,27 @@ cd vue
 npm install
 npm run dev
 ```
+## Setup Vuex
+To install the latest version 
+```
+npm install -S vuex@next
+```
+### Creating data stores
+A Vuex `store` is an object that wraps all of our application’s state and enables us access to features such as mutations, actions, and getters to use in our components to access or update the global state.
+
+Create vuex store in vue/src/store/index.js by calling the `Vuex.Store` constructor with an object including the states and mutations that we want to add to create a basic store.
+`States` are properties that store data in our Vuex store; they let us access the data from anywhere in our Vue 3 app.
+Once we’ve created our store, we import it in vue/src/main.js and use store `createApp`. The `app.use(store);` method call lets us use the store in our Vue 3 app. 
+
+### check if store is working correctly
+add users with data in state of store
+```
+    state: {
+        user: {
+            data: {name: "Qabas"},
+            token:null
+        }
+    },
+```
+Then open App.vue. First, import mapState, 
+
