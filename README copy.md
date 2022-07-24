@@ -18,5 +18,6 @@ DB_DATABASE=laravel_survey
 ```
 Migrate the initial tables
 ```
-php artisan Migrate
+php artisan migrate
 ```
+## Setup Vuejs Project
