@@ -65,3 +65,38 @@ add users with data in state of store
 ```
 Then open App.vue. First, import mapState, 
 
+## Add Tailwindcss
+Setting up Tailwind CSS in a Vue 3 and Vite project.
+### 1. Install Tailwind CSS 
+Install tailwindcss and its peer dependencies via npm, and then run the init command to generate both tailwind.config.js and postcss.config.js.
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+### 2. Configure your template paths
+Add the paths to all of your template files in your tailwind.config.js file.
+```
+content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+```
+### 3. Add the Tailwind directives to your CSS
+Create a ./src/index.css file and add the @tailwind directives for each of Tailwind’s layers.
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+### 4. Import the CSS file
+import the newly-created ./src/index.css file in your ./src/main.js file.
+
+```
+import './index.css'
+```
+### 5. add @headlessui/vue
+A set of completely unstyled, fully accessible UI components for Vue 3, designed to integrate beautifully with Tailwind CSS.
+```
+npm install @headlessui @heroicons/vue @tailwindcss/forms -S
+```
+Then go to https://tailwindui.com/ , choose `Sign-in and Registration`, follow the comment instruction and copy the code and past it in vue\src\components\HelloWorld.vue 
