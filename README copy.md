@@ -20,4 +20,24 @@ Migrate the initial tables
 ```
 php artisan migrate
 ```
+## config .editorconfig file
+`.editorconfig` file is used to keep consistency in the coding environment when you work with multiple team members. It helps you to keep all the code in the same formating.
+
+So as per my view, If you are working with multiple developers then you should not ignore it else you can ignore it.
+
+In our Project we will change the indent_size so make the code more organized.
+```
+[*.{js,css,less,scss,vue}]
+indent_size = 2
+```
 ## Setup Vuejs Project
+We will run this command then I will choose vue then it will ask me to choose vue type, I will choose vue only.
+```
+npm init vite vue
+```
+Then run vue in our Project
+```
+cd vue
+npm install
+npm run dev
+```
