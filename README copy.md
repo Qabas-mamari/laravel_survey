@@ -124,4 +124,14 @@ createApp(App)
 .use(router)
 .mount('#app')
 ```
-### 2. Create the routes
+
+## Vue Components (Login, Register, Layout)
+For Register and Login pages I choose what we copy it in ``HelloWorld`` page. For Dashboard page I choose this layout https://tailwindui.com/components/application-ui/application-shells/stacked. 
+The only important section here is to:
+ 1- Create a common component to share code through vue in view folder.
+ 2- Create a common router.
+ 3- check all pages. 
+ 
+  
+
+
