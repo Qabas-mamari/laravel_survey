@@ -1,20 +1,9 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-// import { mapState } from 'vuex'
+<script>
 
-// export default{
-//   components: {
-//     HelloWorld
-//   },
-//     computed: {
-//         ...mapState(['user'])
-//     }
-// }
 </script>
 
 <template>
-  <!-- <pre>{{user}}</pre> -->
-  <HelloWorld msg="Vite + Vue" />
+  <router-view></router-view>
 </template>
 
 <style scoped>

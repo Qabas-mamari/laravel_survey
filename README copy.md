@@ -100,3 +100,28 @@ A set of completely unstyled, fully accessible UI components for Vue 3, designed
 npm install @headlessui @heroicons/vue @tailwindcss/forms -S
 ```
 Then go to https://tailwindui.com/ , choose `Sign-in and Registration`, follow the comment instruction and copy the code and past it in vue\src\components\HelloWorld.vue 
+
+## Add Vue Router
+check the path,  should be ``` cd vue ``` then 
+run ``` npm i -S vue-router@next ``` 
+### 1. create router constant in index.js file in \vue\src\router
+```
+import { createRouter, createWebHistory } from "vue-router";
+
+const routes = [];
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes
+})
+
+export default router;
+```
+Then imported and use it in main.js
+```
+createApp(App)
+.use(store)
+.use(router)
+.mount('#app')
+```
+### 2. Create the routes
