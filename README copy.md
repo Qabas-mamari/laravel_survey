@@ -131,7 +131,25 @@ The only important section here is to:
  1- Create a common component to share code through vue in view folder.
  2- Create a common router.
  3- check all pages. 
- 
-  
 
+## Redirect to Login Page
+### 1. Redirect to login from router 
+First, Redirect to Login Page if Unauthenticated.
+in ``` vue\src\router\index.js ``` add meta in the Dashboard route(const routes) as the following : 
+```
+meta: {requiresAuth: true}
+```
+Then Redirect to login from router ```beforeEach()```. Unauthenticated users are prevented from accessing restricted pages by the function passed to ```router.beforeEach()```. If the user is not logged in and trying to access a secure page, the function returns the string ```'/login' ```to redirect them to the login page.
+
+```
+router.beforeEach((to, from, next)=>{
+    if(to.meta.requiresAuth && !store.state.user.token){
+        next({name: 'Login'})
+    }else{
+        next();
+    }
+})
+```
+### 2. create auth route
+I create only auth route in ``` vue\src\router\index.js``` to avoid replications, then I create ```AuthLayout.vue``` component for same reason.
 
