@@ -153,3 +153,38 @@ router.beforeEach((to, from, next)=>{
 ### 2. create auth route
 I create only auth route in ``` vue\src\router\index.js``` to avoid replications, then I create ```AuthLayout.vue``` component for same reason.
 
+## Create Layout and Navbar
+move user data from `DefaultLayout.vue` to `store/index.js`.
+To access the store within the `setup` hook, you can call the `useStore` function
+### 1. Modified User const 
+In order to access state and getters, you will want to create computed references to retain reactivity.
+```
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+
+export default {
+  setup() {
+    const store = useStore();
+
+    return{
+      // access a state in computed function
+      user: computed(()=> store.state.user.data),
+    }
+  }
+}
+```
+
+### 2. Modified navigation const 
+First, add the router in const 
+```
+const navigation = [
+  { name: 'Dashboard', to : {name: "Dashboard"}},
+  { name: 'Surveys', to: {name:"Surveys"}},
+]
+```
+Then, Modified the template according to change that we added. 
+
+### 3. Modified userNavigation const
+
+
+remove button tag implementation
