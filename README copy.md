@@ -188,3 +188,6 @@ Then, Modified the template according to change that we added.
 
 
 remove button tag implementation
+
+## Create Reusable PageComponent
+the most important to know defineProps function and slot.
