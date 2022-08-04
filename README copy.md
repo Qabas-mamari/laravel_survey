@@ -190,4 +190,14 @@ Then, Modified the template according to change that we added.
 remove button tag implementation
 
 ## Create Reusable PageComponent
-the most important to know defineProps function and slot.
+the most important is to know use `defineProps` function and `slot`.
+
+## Generate Migrations
+create tables and migeate them. ERD model https://whimsical.com/laravel-survey-BB7Ksgv8UCh5FvawYbYt5q
+```
+php artisan make:model Survey -m 
+php artisan make:model SurveyQuestion -m  
+php artisan make:model SurveyAnswer -m   
+php artisan make:model SurveyQuestionAnswer -m
+php artisan migrate 
+```
