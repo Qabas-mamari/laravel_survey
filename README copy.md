@@ -201,3 +201,5 @@ php artisan make:model SurveyAnswer -m
 php artisan make:model SurveyQuestionAnswer -m
 php artisan migrate 
 ```
+## Signup on Backend
+First, create `AuthController.php`. Second, create `register()` function to request the data and validate it then save it in `user` table and tokenize the data. return the user and token. Finally, add register route in api. 
