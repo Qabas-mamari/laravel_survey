@@ -39,6 +39,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next)=> {
+  // console.log(to, from, next);
     // instead of having to check every route record with to.matched.some(record => record.meta.requiresAuth)
     // to.meta.requiresAuth -> to is desired page, check if it require auth and if the user is authenticated 
   if(to.meta.requiresAuth && !store.state.user.token){ //if not 
