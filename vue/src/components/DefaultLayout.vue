@@ -125,10 +125,13 @@ export default {
     const router = useRouter()
 
     function logout(){
-      store.commit("logout"); //send this function to store\index.js
-      router.push({
-        name: 'Login',
-      });
+      store
+      .dispatch("logout") //send this function to store\index.js
+      .then(()=>{
+        router.push({
+          name: 'Login',
+        });      
+      })
     }
     return{
       // access a state in computed function
