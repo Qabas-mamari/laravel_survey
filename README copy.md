@@ -206,3 +206,5 @@ First, create `AuthController.php`. Second, create `register()` function to requ
 
 ## install axios 
 ```npm i -S axios```
+
+https://heroicons.com/ all icons 
