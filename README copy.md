@@ -208,3 +208,6 @@ First, create `AuthController.php`. Second, create `register()` function to requ
 ```npm i -S axios```
 
 https://heroicons.com/ all icons 
+
+Pa$$w0rd!
+zicyz@mailinator.com
