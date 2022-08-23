@@ -96,7 +96,7 @@
                         </div>
                         <!-- if question exist, looping -->
                         <div v-for="(question, index) in model.questions" :key="question.id">
-                            <QuestionEditor :question="question" :index="index" @change="questionChange" @addQuestion="addQuestion" @deleteQuestion="deleteQuestion"/>
+                            <QuestionEditorVue :question="question" :index="index" @change="questionChange" @addQuestion="addQuestion" @deleteQuestion="deleteQuestion"/>
                         </div>
                     </div>
 
@@ -113,6 +113,7 @@
 
 <script setup>
 import PageComponentVue from '../components/PageComponent.vue';
+import QuestionEditorVue from '../components/editor/QuestionEditor.vue';
 import { ref } from 'vue';
 import store from '../store';
 import { useRoute } from 'vue-router';
