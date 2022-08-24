@@ -117,6 +117,7 @@ import QuestionEditorVue from '../components/editor/QuestionEditor.vue';
 import { ref } from 'vue';
 import store from '../store';
 import { useRoute } from 'vue-router';
+import {v4 as uuidv4} from 'uuid';
 
 const route = useRoute();
 
@@ -135,5 +136,42 @@ if (route.params.id) {
     model.value = store.state.surveys.find(
         (s) => s.id === parseInt(route.params.id)
     );
+}
+
+// index is passing from addQuestion() in QuestionEditor.vue
+function addQuestion(index){
+    // create new question
+    const newQuestion = {
+        id: uuidv4,
+        type: 'text',
+        question: "",
+        description: null,
+        data: {},
+    }
+    /** splice()
+     * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
+        @param start — index 
+        @param deleteCount — The number of elements to remove. 0 
+        @param newQuestion - insert new element
+        @returns — An array containing the elements that were deleted or inserted.
+     */
+    model.value.questions.splice(index, 0, newQuestion);
+}
+
+// Delete question, @param question is passing from deleteQuestion() in QuestionEditor.vue
+function deleteQuestion(question){
+    model.value.questions = model.value.questions.filter(
+        (q)=> q !== question
+    );
+}
+
+// edit question, @param question is passing from dataChange() in QuestionEditor.vue
+function questionChange(question){
+    model.value.questions = model.value.questions.map((q) => {
+        if (q.id === question.id) {
+            return JSON.parse(JSON.stringify(question));
+        }
+        return q
+    });
 }
 </script>

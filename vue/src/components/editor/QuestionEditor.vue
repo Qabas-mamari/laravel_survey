@@ -177,6 +177,17 @@ function dataChange() {
     if (!shouldHaveOptions()) { //text
         delete data.data.options;
     }
-    emit('change', data);
+    emit('change', data); //return question
+}
+
+// add a new question 
+function addQuestion(){
+    // props.index is current question index, 
+    emit('addQuestion', props.index +1) //return the new index
+}
+
+// delete current question 
+function deleteQuestion(){
+    emit('deleteQuestion', props.question); // return question
 }
 </script>
