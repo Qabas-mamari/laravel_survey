@@ -210,7 +210,10 @@ First, create `AuthController.php`. Second, create `register()` function to requ
 ## install uuid
 ```npm i -S uuid```
 
+`php artisan make:controller SurveyController --model=Survey --api --requests`
+
 https://heroicons.com/ all icons 
 
 Pa$$w0rd!
 zicyz@mailinator.com
+
