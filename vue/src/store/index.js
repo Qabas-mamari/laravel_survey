@@ -12,7 +12,7 @@ const tmpSurveys = [
         description: 'My name is Zura.<br>I am Web Developer with 9+ years of experience, free educational content creator, CTO, Lecturer and father of two wonderful daughters.<br><br>The purpose of the channel is to share my several years of experience with beginner developers.<br>Teach them what I know and make my experience as a lesson for others.',
         created_at: "2021-12-20 18:00:00",
         updated_at: "2021-12-20 18:00:00",
-        expire_date: "2021-12-31 18:00:00", 
+        expire_date: "2021-12-31 18:00:00",
         questions : [
             {
                 id: '1',
@@ -27,9 +27,9 @@ const tmpSurveys = [
                         {uuid: 'b5c09733-a49e-460a-ba8a-526863010729', text: 'Germany'},
                         {uuid: '2abf1cee-f5fb-427c-a220-b5d159ad6513', text: 'India'},
                         {uuid: '8d14341b-ec2b-4924-9aea-bda6a53b51fc', text: 'United Kingdom'},
-                    ], 
+                    ],
                 },
-            }, 
+            },
             {
                 id: 2,
                 type: 'checkbox',
@@ -43,7 +43,7 @@ const tmpSurveys = [
                     {uuid: 'b5c09733-a49e-460a-ba8a-526863010729', text: 'All of the above'},
                     {uuid: '2abf1cee-f5fb-427c-a220-b5d159ad6513', text: 'Everything Zura thinks will be good'},
                     ]
-                },  
+                },
             },
             {
                 id: 3,
@@ -171,6 +171,24 @@ const store = createStore({
                 commit('logout');
                 return response;
             })
+        },
+        saveSurvey({commit}, survey){
+          let response;
+          // if survey has id => it means update survey, else create new survey
+          if(survey.id){
+            // update
+            response = axiosClient.put(`/survey/${survey.id}`, survey).then((res)=>{
+              commit('updateSurvey', res.data);
+              return res;
+            });
+          }else{
+            // create new survey
+            response = axiosClient.post("/survey", survey).then((res)=> {
+              commit('saveSurvey', res.data);
+              return res;
+            });
+          }
+          return response;
         }
     },
     mutations: {
@@ -184,6 +202,17 @@ const store = createStore({
             state.user.data = userData.user;
             sessionStorage.setItem("TOKEN", userData.token);
           },
+          saveSurvey: (state, survey) => {
+          state.surveys = [state.surveys, survey.data];
+        },
+        updateSurvey: (state, survey)=>{
+          state.surveys = state.surveys.map((s)=>{
+            if(s.id == survey.data.id){
+              return survey.data;
+            }
+            return s;
+          });
+        }
     },
     modules: {}
 })

@@ -6,7 +6,7 @@ use App\Models\Survey;
 use App\Http\Requests\StoreSurveyRequest;
 use App\Http\Requests\UpdateSurveyRequest;
 use Illuminate\Http\Request;
-use App\Http\Resource\SurveyResource;
+use App\Http\Resources\SurveyResource;
 
 class SurveyController extends Controller
 {
@@ -30,7 +30,7 @@ class SurveyController extends Controller
     public function store(StoreSurveyRequest $request)
     {
         // 1. validate data, 2. create survey
-        $result = Survey::create($request->validation());
+        $result = Survey::create($request->validated());
         return new SurveyResource($result);
     }
 
@@ -60,7 +60,7 @@ class SurveyController extends Controller
     public function update(UpdateSurveyRequest $request, Survey $survey)
     {
         // 1. validate data, 2. update survey
-        $survey->update($request->validation());
+        $survey->update($request->validated());
         return new SurveyResource($survey);
     }
 

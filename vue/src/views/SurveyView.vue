@@ -116,10 +116,11 @@ import PageComponentVue from '../components/PageComponent.vue';
 import QuestionEditorVue from '../components/editor/QuestionEditor.vue';
 import { ref } from 'vue';
 import store from '../store';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import {v4 as uuidv4} from 'uuid';
 
 const route = useRoute();
+const router = useRouter()
 
 //  create empty survey model
 let model = ref({
@@ -150,8 +151,8 @@ function addQuestion(index){
     }
     /** splice()
      * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
-        @param start — index 
-        @param deleteCount — The number of elements to remove. 0 
+        @param start — index
+        @param deleteCount — The number of elements to remove. 0
         @param newQuestion - insert new element
         @returns — An array containing the elements that were deleted or inserted.
      */
@@ -173,5 +174,15 @@ function questionChange(question){
         }
         return q
     });
+}
+
+// create or update survey
+function saveSurvey(){
+  store.dispatch('saveSurvey', model.value).then(({data})=>{
+    router.push({
+      name: "SurveyView",
+      params: {id: data.data.id},
+    });
+  });
 }
 </script>
