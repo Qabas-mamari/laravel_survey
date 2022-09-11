@@ -173,6 +173,7 @@ const store = createStore({
             })
         },
         saveSurvey({commit}, survey){
+          delete survey.image_url; //image_url use only in fronted, no need in the backend
           let response;
           // if survey has id => it means update survey, else create new survey
           if(survey.id){

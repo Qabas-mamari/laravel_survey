@@ -210,10 +210,14 @@ First, create `AuthController.php`. Second, create `register()` function to requ
 ## install uuid
 ```npm i -S uuid```
 
+## create controller and api requests
 `php artisan make:controller SurveyController --model=Survey --api --requests`
+
+## create image column 
+`php artisan make:migration add_image_column_to_surveys_table`
 
 https://heroicons.com/ all icons 
 
 Pa$$w0rd!
-zicyz@mailinator.com
+sewepuryq@mailinator.com
 
