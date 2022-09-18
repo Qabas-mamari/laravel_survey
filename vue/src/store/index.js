@@ -207,6 +207,9 @@ const store = createStore({
             throw err;
           });
         },
+        deleteSurvey({}, id){
+          return axiosClient.delete(`/survey/${id}`);
+        }
     },
     mutations: {
         logout: (state) => {
