@@ -4,13 +4,15 @@
             <div class="flex justify-between items-end">
                 <h1 class="text-3xl font-bold text-gray-900">
                     <!-- check model id, if model exist write the model title, if not create survey -->
-                    {{ model.id ? model.title : 'Create a Survey' }}
+                    {{ route.params.id ? model.title : 'Create a Survey' }}
                 </h1>
             </div>
             <!-- <pre>
                 {{model}}
             </pre> -->
-            <form @submit.prevent="saveSurvey">
+            <!-- <pre>{{surveyLoading}}</pre> -->
+            <div v-if="surveyLoading" class="flex justify-center">Loading...</div>
+            <form v-else @submit.prevent="saveSurvey">
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                     <!-- survey fields -->
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -114,13 +116,14 @@
 <script setup>
 import PageComponentVue from '../components/PageComponent.vue';
 import QuestionEditorVue from '../components/editor/QuestionEditor.vue';
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import store from '../store';
 import { useRoute, useRouter } from 'vue-router';
 import {v4 as uuidv4} from 'uuid';
 
 const route = useRoute();
 const router = useRouter()
+const surveyLoading = computed(()=> store.state.currentSurvey.loading);
 
 //  create empty survey model
 let model = ref({
