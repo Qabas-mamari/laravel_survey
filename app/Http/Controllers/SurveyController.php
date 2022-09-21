@@ -20,7 +20,8 @@ class SurveyController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        return SurveyResource::collection(Survey::where('user_id', $user->id)->paginate());
+        return SurveyResource::collection(Survey::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10));
+        //return SurveyResource::collection(Survey::where('user_id', $user->id)->paginate());
     }
 
     /**
@@ -54,7 +55,7 @@ class SurveyController extends Controller
     {
         // check if user have a permission to return servery data
         $user = $request->user();
-        if($user->id !== $survey->id){
+        if($user->id !== $survey->user_id){
             return abort(403, 'Unauthorized action');
         }
         return new SurveyResource($survey);
@@ -100,7 +101,7 @@ class SurveyController extends Controller
     {
         // check if user have a permission to delete servery data
         $user = $request->user();
-        if($user->id !== $survey->id){
+        if($user->id !== $survey->user_id){
             return abort(403, 'Unauthorized action');
         }
         $survey->delete();
